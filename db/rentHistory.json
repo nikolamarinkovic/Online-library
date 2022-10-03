@@ -1,0 +1,23 @@
+[
+  {
+    "userId": 1,
+    "bookId": 1,
+    "dateTaken": "2022-07-01",
+    "dateReturned": "2022-07-10"
+  },
+
+  {
+    "userId": 1,
+    "bookId": 1,
+    "dateTaken": "2022-07-05",
+    "dateReturned": "2022-07-15"
+  },
+
+  {
+    "userId": 1,
+    "bookId": 2,
+    "dateTaken": "2022-08-01",
+    "dateReturned": "2022-08-03"
+  }
+]
+

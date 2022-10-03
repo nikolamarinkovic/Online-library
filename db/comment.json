@@ -1,0 +1,19 @@
+[
+  {
+    "id": 0,
+    "userId": 1,
+    "bookId": 1,
+    "content": "Super knjiga, nista bolje nisam procitao.",
+    "modified": false,
+    "date": "2022-09-12T15:10:19.843+00:00"
+  },
+
+  {
+    "id": 1,
+    "userId": 1,
+    "bookId": 2,
+    "content": "Nisam mogao da spavam dok ne saznam sta se desilo na kraju, preporucio bih svakome.",
+    "modified": true,
+    "date": "2022-09-15T15:29:19.843+00:00"
+  }
+]

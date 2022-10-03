@@ -1,0 +1,77 @@
+[
+  {
+    "id": 0,
+    "username": "admin",
+    "password": "admin",
+    "firstname": "Admin",
+    "lastname": "Adminic",
+    "address": "Adminovac",
+    "phone": "065123482",
+    "email": "admin@mail.com",
+    "photo": "src/uploads/user_defaultPhoto.jpg",
+    "rentedBooks": [],
+    "rentedBooksDateStart": [],
+    "rentedBooksDateEnd": [],
+    "rentedBooksExtended": [],
+    "reservedBooksAvailable": [],
+    "type": "admin",
+    "status": "accepted"
+  },
+
+  {
+    "id": 1,
+    "username": "pera",
+    "password": "pera",
+    "firstname": "Petar",
+    "lastname": "Petrovic",
+    "address": "Stevana Mokranjca 23",
+    "phone": "060256324",
+    "email": "pera@mail.com",
+    "photo": "src/uploads/user_defaultPhoto.jpg",
+    "rentedBooks": [1, 2],
+    "rentedBooksDateStart": ["2022-08-01", "2022-09-24"],
+    "rentedBooksDateEnd": ["2022-09-20", "2022-09-28"],
+    "rentedBooksExtended": [false, true],
+    "reservedBooksAvailable": [],
+    "type": "reader",
+    "status": "accepted"
+  },
+
+  {
+    "id": 2,
+    "username": "mika",
+    "password": "mika",
+    "firstname": "Mika",
+    "lastname": "Mikic",
+    "address": "Vracar (historical)",
+    "phone": "063236281",
+    "email": "mika@mail.com",
+    "photo": "src/uploads/user_2.jpeg",
+    "rentedBooks": [3],
+    "rentedBooksDateStart": ["2022-08-01"],
+    "rentedBooksDateEnd": ["2022-09-20"],
+    "rentedBooksExtended": [true],
+    "reservedBooksAvailable": [],
+    "type": "reader",
+    "status": "accepted"
+  },
+
+  {
+    "id": 3,
+    "username": "zika",
+    "password": "zika",
+    "firstname": "Zika",
+    "lastname": "Zikic",
+    "address": "Nis",
+    "phone": "0621232612",
+    "email": "zika@mail.com",
+    "photo": "src/uploads/user_3.jpg",
+    "rentedBooks": [2,3],
+    "rentedBooksDateStart": ["2022-08-01", "2022-09-01"],
+    "rentedBooksDateEnd": ["2022-08-10", "2022-09-15"],
+    "rentedBooksExtended": [false, true],
+    "reservedBooksAvailable": [],
+    "type": "moderator",
+    "status": "accepted"
+  }
+]

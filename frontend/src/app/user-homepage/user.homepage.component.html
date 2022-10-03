@@ -1,0 +1,173 @@
+<div class="row">
+  <div class="col-12 col-md-3 ">
+    <a (click)="goToUserProfile()" class="pictureLink">
+      <img [src]="picture" />
+    </a>
+  </div>
+  <div class="col-12 col-md-3 offset-md-6">
+    <a href="" (click)="logout()">Odjava</a>
+  </div>
+</div>
+
+<hr />
+
+
+<table class="table table-bordered" style="margin-top: 20px">
+  <tbody>
+    <tr>
+      <td class = "menuItem" (click)="goToSearch()"><p > <b>Pretraga</b> </p> </td>
+      <td class="menuItem" (click)="goToRentedBooks()"> 
+        <p class="" >
+          <b>Pregled zaduzenih knjiga</b> 
+        </p>
+      </td>
+      <td class="menuItem" (click)="goToRentHistory()">
+        <p class="" >
+           <b>Pregled istorije zadujenih knjiga</b> 
+        </p>
+      </td>
+      <td class = "menuItem" *ngIf="this.user.type=='reader' && this.user.status != 'blocked'" (click)="goToSuggestBook()"> <p > <b>Predlozi knjigu</b> </p> </td>
+      <td class = "menuItem" *ngIf="this.user.type=='moderator' && this.user.status != 'blocked'" (click)="goToSuggestBook()"> <p > <b>Dodaj knjigu</b> </p> </td>
+      <td class = "menuItem" *ngIf="this.user.type=='moderator' && this.user.status != 'blocked'" (click)="goToBookRequests()"> <p > <b>Zahtevi za dodavanje knjiga</b> </p> </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="row" style="text-align: center; padding-bottom: 20px;" >
+  <div class="col-12"><h2>Obavestenja</h2></div>
+</div>
+
+<div class="row" *ngIf="this.notifications.length == 0" style="text-align: center;">
+  <div class="col-12" style="color: green; font-size: large;">
+    <b>Nemate obavestenja.</b> 
+  </div>
+</div>
+
+<table class="table table-striped table-bordered table-hover" style="background-color: rgb(255, 192, 144)">
+  <tbody>
+    <tr *ngFor="let notification of notifications">
+      <td>{{ notification }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr *ngIf="this.user.status != 'blocked'" />
+
+<div class="row" *ngIf="this.user.status != 'blocked'" style="text-align: center;">
+  <div class="col-12"><h1>Knjiga dana!</h1></div>
+</div>
+
+<table
+  class="table table-bordered table-hover  table-striped "
+  style="margin-top: 20px"
+  *ngIf="this.user.status != 'blocked'"
+>
+  <tbody>
+    <tr>
+      <td colspan="2">
+        <img
+          [src]="this.pictureBookOfTheDay"
+        />
+      </td>
+    </tr>
+
+    <tr>
+      <td> <b>Ime:</b> </td>
+      <td>{{ this.bookOfTheDay.name }}</td>
+    </tr>
+
+    <tr>
+      <td> <b>Autori:</b> </td>
+      <td>{{ this.bookOfTheDay.authors.join(", ") }}</td>
+    </tr>
+
+    <tr>
+      <td> <b>Prosecna ocena:</b> </td>
+      <td *ngIf="numOfRatings > 0">{{ bookRating }}/10</td>
+      <td *ngIf="numOfRatings == 0">Nije ocenjena</td>
+    </tr>
+    <tr >
+
+    <tr>
+      <td colspan="2">
+        <button (click)="goToBookDetails(this.bookOfTheDay)" class="btn btn-primary">Detalji</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr *ngIf="this.user.status != 'blocked'" />
+
+
+
+<div class="row" style="text-align: center" *ngIf="this.user.status !='blocked'">
+  <div class="col-12">
+    <h2>Najbolje knjige po ocenama korisnika!</h2>
+  </div>
+</div>
+
+<!--<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+  <div class="carousel-inner" align="center">
+    <div class="carousel-item active">
+      <img class="d-block w-100 carousel-img" [src]="top3Pictures.get(top3Books[0].id)" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100 carousel-img" [src]="top3Pictures.get(top3Books[1].id)" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100 carousel-img" [src]="top3Pictures.get(top3Books[0].id)" alt="Third slide">
+    </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" role="button" data-bs-slide="prev" (click)="prevText()">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" role="button" data-bs-slide="next" (click)="nextText()">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  </button>
+
+  <div align="center">
+    <h5>{{currTop3Book.name}}</h5>
+    <p>{{currTop3Book.authors.join(', ')}}</p>
+  </div>
+</div>
+-->
+
+<div *ngFor="let book of top3Books">
+  <table class="table table-striped table-bordered table-hover">
+    <tbody>
+      <tr>
+        <td colspan="2">
+          <img [src]="top3Pictures.get(book.id)" />
+        </td>
+      </tr>
+  
+      <tr>
+        <td> <b>Naziv:</b> </td>
+        <td>{{ book.name }}</td>
+      </tr>
+  
+      <tr>
+        <td> <b>Autori:</b> </td>
+        <td>{{ book.authors.join(", ") }}</td>
+      </tr>
+  
+      <tr>
+        <td> <b>Zanrovi:</b> </td>
+        <td>{{ book.name }}</td>
+      </tr>
+  
+      <tr>
+        <td> <b>Broj primeraka:</b> </td>
+        <td>{{ book.numberInStock }}</td>
+      </tr>
+
+      <tr *ngIf="this.user.status != 'blocked'">
+        <td colspan="2"> <button class="btn btn-primary" (click)="goToBookDetails(book)"> Detalji</button></td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>

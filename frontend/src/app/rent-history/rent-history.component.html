@@ -1,0 +1,108 @@
+<div class="row" style="text-align: center;">
+  <div class="col-12">
+    <h1>Istorija zaduzenja</h1>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-12"><h4>Sortiranje:</h4></div>
+</div>
+
+<table class="table table-borderless" style="margin-bottom: 40px;">
+  <tbody>
+    <tr>
+      <td> <b>Po cemu sortirati:</b> </td>
+      <td>
+        <input
+          type="radio"
+          id="radioName"
+          name="sortType"
+          value="name"
+          [(ngModel)]="sortType"
+        />
+        <label for="radioName">Ime</label>
+
+        <input
+          type="radio"
+          id="radioAuthors"
+          name="sortType"
+          value="authors"
+          [(ngModel)]="sortType"
+        />
+        <label for="radioAuthors">Autori</label>
+
+        <input
+          type="radio"
+          id="radioDateTaken"
+          name="sortType"
+          value="dateTaken"
+          [(ngModel)]="sortType"
+        />
+        <label for="radioDateTaken">Datum uzimanja</label>
+
+        <input
+          type="radio"
+          id="radioDateReturned"
+          name="sortType"
+          value="dateReturned"
+          [(ngModel)]="sortType"
+          checked
+        />
+        <label for="radioDateReturned">Datum vracanja</label>
+      </td>
+    </tr>
+
+    <tr>
+      <td> <b>Kako sortirati:</b> </td>
+      <td>
+        <input
+          type="radio"
+          id="radioOrderAsc"
+          name="searchOrder"
+          value="asc"
+          [(ngModel)]="sortOrder"
+        />
+        <label for="radioOrderAsc">Rastuce</label>
+
+        <input
+          type="radio"
+          id="radioOrderDesc"
+          name="searchOrder"
+          value="desc"
+          [(ngModel)]="sortOrder"
+          checked="true"
+        />
+        <label for="radioOrderDesc">Opadajuce</label>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" style="text-align: center">
+        <button (click)="sortTotalHistory()" class="btn btn-primary">Sortiraj</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Ime knjige</th>
+      <th>Autori</th>
+      <th>Datum uzimanja</th>
+      <th>Datum vracanja</th>
+      <th *ngIf="this.user.status != 'blocked'" >Detalji</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let history of totalHistory">
+      <td>{{ history.book.name }}</td>
+      <td>{{ history.book.authors.join(", ") }}</td>
+      <td>{{ history.dateTaken | date: "dd-MM-yyyy" }}</td>
+      <td>{{ history.dateReturned | date: "dd-MM-yyyy" }}</td>
+      <td *ngIf="this.user.status != 'blocked'" >
+        <button (click)="goToBookDetails(history)" class="btn btn-info">Detalji</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,81 @@
+
+<div class="row" style="text-align: center;">
+  <div class="col-12"><h1>Promena podataka korisnika</h1></div>
+</div>
+
+<div class="row" style="padding-bottom: 30px;">
+  <div class="col-12 col-md-5"><img [src]="picture" alt="" /></div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Username:</b> </div>
+  <div class="col-12 col-md-3">
+    <input type="text" [(ngModel)]="username" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Ime:</b> </div>
+  <div class="col-12 col-md-3">
+    <input type="text" [(ngModel)]="firstname" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Prezime:</b> </div>
+  <div class="col-12 col-md-3">
+    <input type="text" [(ngModel)]="lastname" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Adresa</b> </div>
+  <div class="col-12 col-md-3"><input type="text" [(ngModel)]="address" /></div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Email:</b> </div>
+  <div class="col-12 col-md-3"><input type="text" [(ngModel)]="email" /></div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Telefon</b> </div>
+  <div class="col-12 col-md-3"><input type="text" [(ngModel)]="phone" /></div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2">  <b>Stara lozinka:</b> </div>
+  <div class="col-12 col-md-3">
+    <input type="password" [(ngModel)]="confirmOldPassword" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Nova lozinka:</b> </div>
+  <div class="col-12 col-md-3">
+    <input type="password" [(ngModel)]="newPassword" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Potvrdi lozinku:</b> </div>
+  <div class="col-12 col-md-3">
+    <input type="password" [(ngModel)]="confirmNewPassword" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12">
+    <button (click)="changeUserData()" class="btn btn-primary">Promeni</button>
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-3">
+    <span style="color: red">
+        {{ msgUpdateInfo }}
+      </span>
+  </div>
+</div>
+
+

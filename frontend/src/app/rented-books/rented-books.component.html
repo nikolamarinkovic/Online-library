@@ -1,0 +1,60 @@
+
+<div class="row" style="text-align: center; padding-bottom: 30px" >
+  <div class="col-12">
+    <h1>Pregled zaduzenih knjiga</h1>
+  </div>
+</div>
+
+<div class="row" *ngIf=" this.rentedBooks == null || this.rentedBooks.length == 0 ">
+  <div class="col-12">
+      <h4 style="color: lightgreen">Nemate zaduzene knjige.</h4>
+  </div>
+</div>
+
+
+
+<table class="table table-striped table-bordered table-hover" *ngIf="this.rentedBooks.length > 0">
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>Naziv</th>
+      <th>Autor</th>
+      <th>Broj dana za vracanje</th>
+      <th *ngIf="this.user.status != 'blocked'">Detalji</th>
+      <th>Razduzi</th>
+      <th *ngIf="this.user.status != 'blocked'">Produzi</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr *ngFor="let book of this.rentedBooks; let i = index">
+      <td><img [src]="bookPhotos[i]" height="10%" /></td>
+      <td>{{ book.name }}</td>
+      <td>{{ book.authors.join(", ") }}</td>
+      <td [hidden]="calculateDateDiff(user.rentedBooksDateEnd[i]) < 0">
+        {{ calculateDateDiff(user.rentedBooksDateEnd[i]) }}
+      </td>
+      <td
+        [hidden]="calculateDateDiff(user.rentedBooksDateEnd[i]) >= 0"
+        style="color: red"
+      >
+        {{ calculateDateDiff(user.rentedBooksDateEnd[i]) }}
+      </td>
+      <td *ngIf="this.user.status != 'blocked'"><button (click)="goToBookDetails(book)" class="btn btn-info">Detalji</button></td>
+      <td ><button (click)="returnBook(i, book.id)" class="btn btn-danger">Razduzi</button></td>
+      <td *ngIf="user.rentedBooksExtended[i] == false && this.user.status != 'blocked'">
+        <button (click)="extendBookReturnDeadline(i, book.id)" class="btn btn-success">Produzi</button>
+      </td>
+      <td *ngIf="user.rentedBooksExtended[i] == true && this.user.status != 'blocked'">
+        Vec produzeno.
+      </td>
+    </tr>
+  </tbody>
+
+</table>
+
+<div class="row">
+  <div class="col-12"><span>{{ msgRentedBooks }}</span></div>
+</div>
+

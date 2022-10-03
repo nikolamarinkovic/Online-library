@@ -1,0 +1,107 @@
+<div class="row">
+  <div class="col-9"></div>
+  <div class="col-3">
+    <a href="" (click)="logout()"> Odjava</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <h1>Korisnici u sistemu:</h1>
+  </div>
+</div>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Ime</th>
+      <th scope="col">Prezime</th>
+      <th scope="col">Tip</th>
+      <th scope="col">Broj knjiga</th>
+      <th scope="col">Email</th>
+      <th scope="col">Unapredi u moderatora</th>
+      <th scope="col">Vrati u citaoca</th>
+      <th scope="col">Blokiraj</th>
+      <th scope="col">Odblokoraj</th>
+      <th scope="col">Prihvati</th>
+      <th scope="col">Odbij</th>
+      <th scope="col">Obrisi</th>
+      <th scope="col">Promeni podatke</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of this.users">
+      <td>
+        {{ user.username }}
+      </td>
+
+      <td>
+        {{ user.firstname }}
+      </td>
+
+      <td>
+        {{ user.lastname }}
+      </td>
+
+      <td>
+        {{ user.type }}
+      </td>
+
+      <td>
+        {{ user.rentedBooks.length }}
+      </td>
+
+      <td>
+        {{ user.email }}
+      </td>
+
+      <td>
+        <div *ngIf="user.type == 'reader'">
+          <button (click)="upgradeReaderToModerator(user)" class="btn btn-success">Unapredi</button>
+        </div>
+      </td>
+
+      <td style="text-align: center">
+        <div *ngIf="user.type == 'moderator'">
+          <button (click)="downgradeModeratorToReader(user)" class="btn btn-warning">Vrati</button>
+        </div>
+      </td>
+
+      <td>
+        <div *ngIf="user.status != 'blocked' && user.type != 'admin'">
+          <button (click)="blockUser(user)" class="btn btn-danger">Blokiraj</button>
+        </div>
+      </td>
+
+      <td>
+        <div *ngIf="user.status == 'blocked'">
+          <button (click)="unblockUser(user)" class="btn btn-light">Odblokiraj</button>
+        </div>
+      </td>
+
+      <td>
+        <div *ngIf="user.status == 'pending'">
+          <button (click)="acceptUser(user)" class="btn btn-success">Prihvati</button>
+        </div>
+      </td>
+
+      <td>
+        <div *ngIf="user.status == 'pending'">
+          <button (click)="rejectUser(user)" class="btn btn-danger">Odbij</button>
+        </div>
+      </td>
+
+      <td>
+        <div *ngIf="user.type != 'admin'">
+          <button (click)="deleteUser(user)" class="btn btn-dark">Obrisi</button>
+        </div>
+      </td>
+
+      <td style="text-align: center">
+        <button (click)="goToUserModifyPage(user)" class="btn btn-primary">Promeni</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

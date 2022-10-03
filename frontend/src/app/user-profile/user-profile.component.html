@@ -1,0 +1,151 @@
+<div class="row">
+  <div class="col-12 col-md-3">
+    <a (click)="goToUserProfile()" class="pictureLink">
+      <img [src]="picture" />
+    </a>
+  </div>
+  <div class="col-12 col-md-3 offset-md-6">
+    <a href="" (click)="logout()">Odjava</a>
+  </div>
+</div>
+
+<hr />
+
+<div class="row" style="text-align: center; margin-bottom: 30px">
+  <div class="col-12"><h1>Profil</h1></div>
+</div>
+
+<div class="row" style="margin-bottom: 10px">
+  <div class="col-12 col-md-2"><b>Korisnicko ime:</b></div>
+  <div class="col-12 col-md-2">{{ user.username }}</div>
+  <div class="col-12 col-md-2 offset-md-1"> 
+    <b> Novo korisnicko ime: </b>
+  </div>
+  <div class="col-12 col-md-2">
+    <input type="text" [(ngModel)]="username" />
+  </div>
+  <div class="col-12 col-md-2">
+    <button class="btn btn-primary" (click)="submitChangingInfo('username')">Promeni korisnicko ime</button>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom: 10px">
+  <div class="col-12 col-md-2"><b>Ime:</b></div>
+  <div class="col-12 col-md-2">{{ user.firstname }}</div>
+  <div class="col-12 col-md-2 offset-md-1"> 
+    <b> Novo ime: </b>
+  </div>
+  <div class="col-12 col-md-2">
+    
+    <input type="text" [(ngModel)]="firstname" />
+  </div>
+  <div class="col-12 col-md-2">
+    <button class="btn btn-primary" (click)="submitChangingInfo('firstname')">Promeni ime</button>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom: 10px">
+  <div class="col-12 col-md-2"><b>Prezime:</b></div>
+  <div class="col-12 col-md-2">{{ user.lastname }}</div>
+  <div class="col-12 col-md-2 offset-md-1"> 
+    <b> Novo Prezime: </b>
+  </div>
+  <div class="col-12 col-md-2">
+    <input type="text" [(ngModel)]="lastname" />
+  </div>
+  <div class="col-12 col-md-2">
+    <button class="btn btn-primary" (click)="submitChangingInfo('lastname')">Promeni prezime</button>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom: 10px">
+  <div class="col-12 col-md-2"><b>Adresa:</b></div>
+  <div class="col-12 col-md-2">{{ user.address }}</div>
+  <div class="col-12 col-md-2 offset-md-1"> 
+    <b> Nova adresa: </b>
+  </div>
+  <div class="col-12 col-md-2">
+    <input type="text" [(ngModel)]="address" />
+  </div>
+  <div class="col-12 col-md-2">
+    <button class="btn btn-primary" (click)="submitChangingInfo('address')">Promeni adresu</button>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom: 10px">
+  <div class="col-12 col-md-2"><b>Telefon:</b></div>
+  <div class="col-12 col-md-2">{{ user.phone }}</div>
+  <div class="col-12 col-md-2 offset-md-1">
+    <b> Novi telefon: </b>
+  </div>
+  <div class="col-12 col-md-2">
+    <input type="text" [(ngModel)]="phone" />
+  </div>
+  <div class="col-12 col-md-2">
+    <button class="btn btn-primary" (click)="submitChangingInfo('phone')">Promeni telefon</button>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom: 10px">
+  <div class="col-12 col-md-2"><b>Email:</b></div>
+  <div class="col-12 col-md-2">{{ user.email }}</div>
+  <div class="col-12 col-md-2 offset-md-1">
+    <b> Novi email: </b>
+  </div>
+  <div class="col-12 col-md-2">
+    <input type="text" [(ngModel)]="email" />
+  </div>
+  <div class="col-12 col-md-2">
+    <button class="btn btn-primary" (click)="submitChangingInfo('email')">Promeni email</button>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom: 10px">
+  <div class="col-12 col-md-2 offset-md-5"><b>Nova Slika:</b></div>
+  <div class="col-12 col-md-2">
+    <input type="file" accept="image" (change)="selectImage($event)" />
+  </div>
+  <div class="col-12 col-md-2">
+    <button class="btn btn-primary" (click)="submitChangingInfo('picture')">Promeni sliku</button>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom: 10px">
+  <div class="col-12 col-md-2 offset-md-5"><b>Stara lozinka:</b></div>
+  <div class="col-12 col-md-3">
+    <input type="password" [(ngModel)]="confirmOldPassword" />
+  </div>
+</div>
+
+<div class="row" style="margin-bottom: 10px">
+  <div class="col-12 col-md-2 offset-md-5"><b>Nova lozinka:</b></div>
+  <div class="col-12 col-md-3">
+    <input type="password" [(ngModel)]="newPassword" />
+  </div>
+</div>
+
+<div class="row" style="margin-bottom: 10px">
+  <div class="col-12 col-md-2 offset-md-5"><b>Potvrdi lozinku:</b></div>
+  <div class="col-12 col-md-2">
+    <input type="password" [(ngModel)]="confirmNewPassword" />
+  </div>
+  <div class="col-12 col-md-2">
+    <button class="btn btn-primary" (click)="submitChangingInfo('password')" >Promeni lozinku</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 offset-md-5">
+    <span class="error"> <b style="font-size: large"> {{ msgUpdateInfo }} </b> </span>
+  </div>
+</div>
+
+<div class="divMultipleCharts">
+  <div class="divSingleChart">
+    <canvas id="booksPerMonthChart" width="400" height="400"></canvas>
+  </div>
+  &nbsp;&nbsp;&nbsp;
+  <div class="divSingleChart">
+    <canvas id="booksPerGenreChart" width="400" height="400"></canvas>
+  </div>
+</div>

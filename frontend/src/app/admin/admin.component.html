@@ -1,0 +1,55 @@
+<div class="row">
+  <div class=" offset-9 col-3">
+    <a href="" (click)="logout()"> Odjava</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <h2>Funkcionalnosti sa knjigama:</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-2">
+    <button (click)="adminAddBook()" class="btn btn-success">Dodavanje knjige</button>
+  </div>
+
+  <div class="col-12 col-md-3">
+    <button (click)="adminModifyDeleteBook()" class="btn btn-danger">
+      Azuriranje/brisanje knjige
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <h2>Funkcionalnosti sa korisnicima:</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-2">
+    <button (click)="adminAddUser()" class="btn btn-success">Dodavanje korisnika</button>
+  </div>
+
+  <div class="col-12 col-md-3">
+    <button (click)="adminModifyDeleteUser()" class="btn btn-danger">
+      Azuriranje/brisanje korisnika
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <h2>Opste funkcionalnosti:</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <button (click)="adminChangeRentTime()" class="btn btn-primary">
+      Postavljanje broja dana zaduzenja knjige
+    </button>
+  </div>
+</div>

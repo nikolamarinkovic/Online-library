@@ -1,0 +1,33 @@
+<div class="row" style="text-align: center">
+    <div class="col-12">
+      <h1>Prijava</h1>
+    </div>
+  </div>
+  
+  <form>
+    <div class="row" style="padding-bottom: 5px">
+      <div class="col-12 col-md-2"><b> Korisnicko ime: </b></div>
+      <div class="col-12 col-md-6">
+        <input type="text" name="usernameLog" [(ngModel)]="usernameLogin" />
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-12 col-md-2"><b>Lozinka:</b></div>
+      <div class="col-12 col-md-6">
+        <input type="password" name="passLog" [(ngModel)]="passwordLogin" />
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <input type="button" value="Prijavi se" (click)="login()" class="btn btn-primary" />
+      </div>
+    </div>
+  </form>
+  
+  <div class="row">
+    <div class="col-12">
+      <span class="error">{{ msgLogin }}</span>
+    </div>
+  </div>

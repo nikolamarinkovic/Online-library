@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.error {
+    color: red;
+}
+
+html{
+    background-color: #f5efa9;
+    width: 100vw;
+}
+
+.textLikeLink{
+    cursor:pointer;
+     color:blue;
+     text-decoration:underline;
+}
+
+table{
+    background-color: rgba(196, 238, 196, 0.533);
+  }

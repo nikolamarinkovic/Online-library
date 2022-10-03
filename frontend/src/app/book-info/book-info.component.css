@@ -1,0 +1,9 @@
+img {
+  max-width: 300px;
+  max-height: 480px;
+}
+
+.imgUser {
+  max-width: 80px;
+  max-height: 100px;
+}

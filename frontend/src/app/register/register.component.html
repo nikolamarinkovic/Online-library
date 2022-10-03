@@ -1,0 +1,73 @@
+<div class="row" style="padding-bottom: 5px; text-align: center;">
+    <div class="col-12"><h1>Registracija</h1></div>
+  </div>
+  
+  <form>
+    <div class="row" style="padding-bottom: 5px;">
+      <div class="col-12 col-md-2"><b>Ime*:</b></div>
+      <div class="col-12 col-md-4">
+        <input type="text" name="firstname" [(ngModel)]="userReg.firstname" />
+      </div>
+    </div>
+  
+    <div class="row" style="padding-bottom: 5px;">
+      <div class="col-12 col-md-2"><b>Prezime*:</b></div>
+      <div class="col-12 col-md-4">
+        <input type="text" name="lastname" [(ngModel)]="userReg.lastname" />
+      </div>
+    </div>
+  
+    <div class="row" style="padding-bottom: 5px;">
+      <div class="col-12 col-md-2"><b>Korisnicko ime*:</b></div>
+      <div class="col-12 col-md-4">
+        <input type="text" name="usernameReg" [(ngModel)]="userReg.username" />
+      </div>
+    </div>
+  
+    <div class="row" style="padding-bottom: 5px;">
+      <div class="col-12 col-md-2"><b>Lozinka*:</b></div>
+      <div class="col-12 col-md-4">
+        <input type="password" name="passReg" [(ngModel)]="userReg.password" />
+      </div>
+    </div>
+  
+    <div class="row" style="padding-bottom: 5px;">
+      <div class="col-12 col-md-2"><b>Potvrdite lozinku*:</b></div>
+      <div class="col-12 col-md-4">
+        <input
+          type="password"
+          name="passRegConfirm"
+          [(ngModel)]="confirmPassword"
+        />
+      </div>
+    </div>
+  
+    <div class="row" style="padding-bottom: 5px;">
+      <div class="col-12 col-md-2"><b>Telefon*:</b></div>
+      <div class="col-12 col-md-4"><input type="text" name="phone" [(ngModel)]="userReg.phone" /></div>
+    </div>
+  
+    <div class="row" style="padding-bottom: 5px;">
+      <div class="col-12 col-md-2"><b>Email*:</b></div>
+      <div class="col-12 col-md-4"><input type="email" name="email" [(ngModel)]="userReg.email" /></div>
+    </div>
+  
+    <div class="row" style="padding-bottom: 5px;">
+      <div class="col-12 col-md-2"><b>Adresa*:</b></div>
+      <div class="col-12 col-md-4"><input type="email" name="email" [(ngModel)]="userReg.address" /></div>
+    </div>
+  
+    <div class="row" style="padding-bottom: 5px;">
+      <div class="col-12 col-md-2"><b>Slika:</b></div>
+      <div class="col-12 col-md-4"><input type="file" accept="image" (change)="selectImage($event)" /></div>
+    </div>
+  
+    <div class="row" style="padding-bottom: 5px;">
+      <div class="col-12"><input type="button" value="Registruj se" (click)="register()" class="btn btn-primary"/></div>
+    </div>
+  
+    <div class="row" style="padding-bottom: 5px;">
+      <div class="col-12"><span class="error">{{ msgRegister }}</span></div>
+    </div>
+  
+  </form>

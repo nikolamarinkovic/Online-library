@@ -1,0 +1,95 @@
+
+<div class="row" *ngIf="this.user.status != 'blocked'" style="padding-bottom: 5px;">
+  <div class="col-12" style="text-align: center">
+    <h3 *ngIf="user.type == 'reader'">Predlozi knjigu</h3>
+    <h3 *ngIf="user.type == 'moderator'">Dodaj knjigu</h3>
+  </div>
+</div>
+
+<div class="row" *ngIf="this.user.status != 'blocked'" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-4"><b>Naziv:*</b></div>
+  <div class="col-12 col-md-4">
+    <input type="text" [(ngModel)]="newBook.name" />
+  </div>
+</div>
+
+<div class="row" *ngIf="this.user.status != 'blocked'" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-4"><b>Broj autora:*</b></div>
+  <div class="col-12 col-md-4">
+    <input type="number" [(ngModel)]="authorsNumber" max="3" />
+  </div>
+</div>
+
+<div *ngIf="this.user.status != 'blocked'" style="padding-bottom: 5px;">
+  <div
+    *ngFor="let item of createRange(authorsNumber); let i = index"
+    [hidden]="!authorsNumber"
+    style="padding-bottom: 2px;"
+  >
+    <div class="row" [hidden]="i != 0">
+      <div class="col-12 col-md-4"><b>Autori:*</b></div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-4 offset-md-4">
+        <input type="text" [(ngModel)]="newBook.authors[i]" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="this.user.status != 'blocked'" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-4"><b>Zanrovi:*</b></div>
+  <div class="col-12 col-md-4">
+    <select multiple [(ngModel)]="newBook.genre">
+      <option *ngFor="let genre of this.bookGenres" value="{{ genre.name }}">
+        {{ genre.name }}
+      </option>
+    </select>
+  </div>
+</div>
+
+<div class="row" *ngIf="this.user.status != 'blocked'" style="padding-bottom: 5px">
+  <div class="col-12 col-md-4"><b>Izdavac:*</b></div>
+  <div class="col-12 col-md-4">
+    <input type="text" [(ngModel)]="newBook.publisher" />
+  </div>
+</div>
+
+<div class="row" *ngIf="this.user.status != 'blocked'" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-4"><b>Godina izdavanja:*</b></div>
+  <div class="col-12 col-md-4">
+    <input type="text" [(ngModel)]="newBook.publishYear" />
+  </div>
+</div>
+
+<div class="row" *ngIf="this.user.status != 'blocked'" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-4"><b>Jezik:*</b></div>
+  <div class="col-12 col-md-4">
+    <input type="text" [(ngModel)]="newBook.language" />
+  </div>
+</div>
+
+<div class="row" *ngIf="this.user.status != 'blocked'" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-4"><b>Slika:</b></div>
+  <div class="col-12 col-md-4">
+    <input type="file" accept="image" (change)="selectImage($event)" />
+  </div>
+</div>
+
+<div class="row" *ngIf="this.user.status != 'blocked' && this.user.type == 'reader'">
+  <div class="col-12">
+    <input type="button" value="Posalji predlog" (click)="insertBook()" class="btn btn-primary" />
+  </div>
+</div>
+<div class="row" *ngIf="this.user.status != 'blocked' && this.user.type == 'moderator'" >
+  <div class="col-12">
+    <input type="button" value="Dodaj knjigu" (click)="insertBook()" class="btn btn-primary" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <span class="error">{{ msgInsertBook }}</span>
+  </div>
+</div>

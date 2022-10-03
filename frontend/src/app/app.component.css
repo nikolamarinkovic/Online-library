@@ -1,0 +1,13 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f5efa9;
+    width: 100vw;
+}
+
+
+.error {
+    color: red;
+}
+

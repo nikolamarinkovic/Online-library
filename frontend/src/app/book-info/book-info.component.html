@@ -1,0 +1,280 @@
+<div class="row">
+  <div class="col-12">
+    <img [src]="picture" />
+  </div>
+</div>
+
+<div class="row" style="text-align: center">
+  <div class="col-12">
+    <h2>Podaci o knjizi:</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-2"> <b>Naziv:</b> </div>
+  <div class="col-12 col-md-6">
+    <div *ngIf="!changingInfo">{{ this.book.name }}</div>
+    <div *ngIf="changingInfo"><input type="text" [(ngModel)]="name" /></div>
+  </div>
+</div>
+
+<div class="row" *ngIf="changingInfo">
+  <div class="col-12 col-md-2"> <b>Broj autora:</b> </div>
+  <div class="col-12 col-md-6">
+    <input type="number" [(ngModel)]="authorsNumber" />
+  </div>
+</div>
+
+<div class="row" *ngIf="!changingInfo">
+  <div class="col-12 col-md-2"> <b>Autori:</b> </div>
+  <div class="col-12 col-md-7">{{ this.book.authors.join(", ") }}</div>
+</div>
+
+<div
+  *ngFor="let item of createRange(authorsNumber); let i = index"
+  [hidden]="!authorsNumber || !changingInfo"
+>
+  <div class="row" [hidden]="i != 0">
+    <div class="col-12 col-md-2"> <b>Autori:</b> </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-6 offset-md-5">
+      <input type="text" [(ngModel)]="book.authors[i]" />
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-2"> <b>Zanrovi:</b> </div>
+  <div class="col-12 col-md-6">
+    <div *ngIf="!changingInfo">{{ this.book.genre.join(", ") }}</div>
+    <div *ngIf="changingInfo">
+      <select multiple [(ngModel)]="genre">
+        <option *ngFor="let genre of this.bookGenres" value="{{ genre.name }}">
+          {{ genre.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-2"> <b>Izdavac:</b> </div>
+  <div class="col-12 col-md-6">
+    <div *ngIf="!changingInfo">{{ this.book.publisher }}</div>
+    <div *ngIf="changingInfo">
+      <input type="text" [(ngModel)]="publisher" />
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-2"> <b>Godina izdavanja:</b> </div>
+  <div class="col-12 col-md-6">
+    <div *ngIf="!changingInfo">{{ this.book.publishYear }}</div>
+    <div *ngIf="changingInfo">
+      <input type="text" [(ngModel)]="publishYear" />
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-2"> <b>Jezik:</b> </div>
+  <div class="col-12 col-md-5">
+    <div *ngIf="!changingInfo">{{ this.book.language }}</div>
+    <div *ngIf="changingInfo"><input type="text" [(ngModel)]="language" /></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-2"> <b>Broj na stanju:</b> </div>
+  <div class="col-12 col-md-6">
+    <div *ngIf="!changingInfo">{{ this.book.numberInStock }}</div>
+    <div *ngIf="changingInfo">
+      <input type="number" [(ngModel)]="numberInStock" />
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="changingInfo">
+  <div class="col-12 col-md-2"> <b>Slika:</b> </div>
+  <div class="col-12 col-md-6">
+    <input type="file" accept="image" (change)="selectImage($event)" />
+  </div>
+</div>
+
+<div class="row" *ngIf="!changingInfo && user.type == 'moderator'">
+  <div class="col-12">
+    <input type="button" value="Izmeni podatke" (click)="beginChangingInfo()" />
+  </div>
+</div>
+
+<div class="row" *ngIf="changingInfo">
+  <div class="col-12">
+    <input
+      type="button"
+      value="Zavrsi izmenu"
+      (click)="submitChangingInfo()"
+      [hidden]="!changingInfo"
+    />
+  </div>
+</div>
+
+<div class="row" *ngIf="changingInfo">
+  <div class="col-12">
+    <input
+      type="button"
+      value="Odustani"
+      (click)="cancelChangingInfo()"
+      [hidden]="!changingInfo"
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-2"> <b>Ocena knjige:</b> </div>
+  <div class="col-12 col-md-6" *ngIf="this.numOfRatings > 0">{{ this.bookRating.toFixed(2) }}</div>
+  <div class="col-12 col-md-6" *ngIf="this.numOfRatings == 0">Knjiga nije ocenjena</div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-2" *ngIf="this.numOfRatings > 0"> <b>Broj glasova:</b> </div>
+  <div class="col-12 col-md-6" *ngIf="this.numOfRatings > 0">{{ this.numOfRatings }}</div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-2" > <b>Ocenite knjigu:</b> </div>
+  <div class="col-12 col-md-1">
+    <select name="rateBook" [(ngModel)]="rateValue" style="width: 50px; height: 30px;">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="5">5</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+  </div>
+  <div class="col-12 col-md-3" >
+    <input type="button" value="Oceni" (click)="rateBook()" class="btn btn-primary" style="margin-left: 15px" />
+  </div>
+</div>
+
+<div class="row" *ngIf="this.eligibleToTakeBook">
+  <div class="col-12"><button (click)="takeBook()">Zaduzi</button></div>
+</div>
+
+<div class="row" *ngIf="this.eligibleToReserveBook">
+  <div class="col-12"><button (click)="reserveBook()">Rezervisi</button></div>
+</div>
+
+<div class="row" *ngIf="this.eligibleForBook == false">
+  <div class="col-12">
+    <span style="color: red">{{ this.errorMessage }}</span>
+  </div>
+  <div class="col-12 col-md-6"></div>
+</div>
+
+<div class="row">
+  <div class="col-12">{{ this.orderInfo }}</div>
+</div>
+
+<div class="row" *ngIf="this.userReservedBook == true">
+  <div class="col-12 col-md-5" style="color: lightgreen">
+    Rezervisali ste knjigu.
+  </div>
+</div>
+
+
+
+<hr>
+
+<div class="row">
+  <div class="col-12"><h2>Napisi komentar:</h2></div>
+</div>
+
+<div class="row">
+  <div class="col-12"><textarea cols="60" rows="5" [(ngModel)]="commentContent"></textarea></div>
+</div>
+
+<div class="row">
+  <div class="col-12"><button (click)="postComment()">Postavi</button></div>
+</div>
+
+
+<hr>
+
+<div class="row">
+  <div class="col-12"><h2>Komentari</h2></div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-5"></div>
+  <div class="col-12 col-md-6"></div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-5"></div>
+  <div class="col-12 col-md-6"></div>
+</div>
+
+
+
+<br />
+
+<div *ngIf="comments.length == 0">Knjiga nema komentare.</div>
+
+<table class="table table-striped table-bordered table-hover" *ngIf="comments.length > 0">
+  <thead> 
+    <tr>
+      <th>Korisnik</th>
+      <th>Komentar</th>
+      <th>Datum</th>
+      <th>Vreme</th>
+      <th *ngIf="this.editingComment == false">Promeni</th>
+      <th *ngIf="this.editingComment == true">Odustani/Postavi</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr *ngFor="let comment of this.fullComments">
+      <td>
+        {{ comment.username }}
+      </td>
+  
+      <td *ngIf="this.editingComment == false">
+        {{ comment.comment.content }}
+        <div *ngIf="comment.comment.modified == true" style="font-size: 11px">
+          (izmenjeno)
+        </div>
+      </td>
+  
+      <td>
+        {{this.datePipe.transform(comment.comment.date, 'yyyy-MM-dd')}}
+      </td>
+
+      <td>
+        {{this.datePipe.transform(comment.comment.date, 'h:mm a')}}
+      </td>
+
+      <td *ngIf="comment.userId == this.user.id && this.editingComment == true">
+        <textarea cols="50" rows="5" [(ngModel)]="newComment" maxlength="1000"></textarea>
+      </td>
+  
+      <td *ngIf="comment.userId == this.user.id && this.editingComment == false">
+        <button (click)="startEditingComment(comment)" class="btn btn-primary">Promeni</button>
+      </td>
+  
+      <td *ngIf="comment.userId == this.user.id && this.editingComment == true">
+        <button (click)="cancelEditingComment(comment)" class="btn btn-danger">Odustani</button>
+        <button (click)="changeComment(comment)" class="btn btn-success">Postavi</button>
+      </td>
+    </tr>
+  </tbody>
+  
+
+</table>

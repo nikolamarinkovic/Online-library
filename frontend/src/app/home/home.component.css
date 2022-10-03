@@ -1,0 +1,16 @@
+img{
+    max-width: 80px;
+    max-height: 100px;
+}
+
+.carousel-img {
+    max-width: 200px;
+    max-height: 400px;
+    width: 200px;
+    height: 400px;
+}
+
+.carousel-control-next,
+.carousel-control-prev{
+    filter: invert(100%);
+}

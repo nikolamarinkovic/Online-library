@@ -1,0 +1,75 @@
+[
+  {
+    "id": 0,
+    "name": "Misterija"
+  },
+  {
+    "id": 1,
+    "name": "Triler"
+  },
+  {
+    "id": 2,
+    "name": "Decja"
+  },
+  {
+    "id": 3,
+    "name": "Autobiografija"
+  },
+  {
+    "id": 4,
+    "name": "Nauka"
+  },
+  {
+    "id": 5,
+    "name": "Umetnost"
+  },
+  {
+    "id": 6,
+    "name": "Istorija"
+  },
+  {
+    "id": 7,
+    "name": "Horor"
+  },
+  {
+    "id": 8,
+    "name": "Naucna fantastika"
+  },
+
+  {
+    "id": 9,
+    "name": "Samopomoc"
+  },
+
+  {
+    "id": 10,
+    "name": "Zdravlje"
+  },
+
+  {
+    "id": 11,
+    "name": "Tragedija"
+  },
+
+  {
+    "id": 12,
+    "name": "Drama"
+  },
+
+  {
+    "id": 13,
+    "name": "Poezija"
+  },
+  {
+    "id": 14,
+    "name": "Komedija"
+  },
+  {
+    "id": 15,
+    "name": "Popularna psihologija"
+  },
+  {
+    "id": 16,
+    "name": "Akcija i avantura"
+  }
+]

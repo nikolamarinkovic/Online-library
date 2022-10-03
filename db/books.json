@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Igra gladi prvi deo",
+    "authors": ["Suzanne Collins"],
+    "genre": ["Naucna fantastika", "Triler", "Drama"],
+    "publisher": "Scholastic",
+    "publishYear": 2008,
+    "language": "English",
+    "photo": "src/uploads/book_1.jpg",
+    "userId": 2,
+    "numberInStock": 5,
+    "status": "accepted",
+    "numberOfTimesTaken": 6,
+    "isBookOfTheDay": 1
+  },
+  {
+    "id": 2,
+    "name": "Igra gladi drugi deo",
+    "authors": ["Suzanne Collins"],
+    "genre": ["Naucna fantastika", "Triler", "Drama"],
+    "publisher": "Scholastic",
+    "publishYear": 2013,
+    "language": "English",
+    "photo": "src/uploads/book_2.jpg",
+    "userId": 2,
+    "numberInStock": 2,
+    "status": "accepted",
+    "numberOfTimesTaken": 5,
+    "isBookOfTheDay": 0
+  },
+  {
+    "id": 3,
+    "name": "Igra gladi treci deo",
+    "authors": ["Suzanne Collins"],
+    "genre": ["Naucna fantastika", "Triler", "Drama"],
+    "publisher": "Scholastic",
+    "publishYear": 2017,
+    "language": "English",
+    "photo": "src/uploads/book_3.jpg",
+    "userId": 2,
+    "numberInStock": 1,
+    "status": "accepted",
+    "numberOfTimesTaken": 4,
+    "isBookOfTheDay": 0
+  },
+  {
+    "id": 4,
+    "name": "Algoritmi i strukture podataka",
+    "authors": ["Milo Tomasevic", "Marko Misic"],
+    "genre": ["Misterija", "Triler", "Nauka"],
+    "publisher": "ETF",
+    "publishYear": 2022,
+    "language": "Srpski",
+    "photo": "src/uploads/book_defaultPhoto.jpg",
+    "userId": 2,
+    "numberInStock": 0,
+    "status": "pending",
+    "numberOfTimesTaken": 3,
+    "isBookOfTheDay": 0
+  }
+]

@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-9"></div>
+  <div class="col-3">
+    <a href="" (click)="logout()"> Odjava</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <h1>Menjanje broj dana zaduzenja knjige</h1>
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 10px;">
+  <div class="col-12 col-md-2"> <b >Trenutni broj dana:</b> </div>
+  <div class="col-12 col-md-1">
+    <b>{{ rentLen }}</b>
+    
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-2"> <b>Novi broj dana:</b> </div>
+  <div class="col-12 col-md-3">
+    <input type="number" id="newRentLen" [(ngModel)]="newRentLen" value="14" min="1"/>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-md-5" style="padding-top: 10px"><button (click)="setNewRentDays()" class="btn btn-primary">Postavi novi broj dana</button></div>
+  </div>
+  
+
+
+ 
+    

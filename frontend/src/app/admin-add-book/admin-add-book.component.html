@@ -1,0 +1,87 @@
+<div class="row" style="text-align: center; padding-bottom: 30px;">
+  <div class="col-12">
+    <h1>Dodaj knjigu</h1>
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"><b> Naziv: </b></div>
+  <div class="col-12 col-md-5">
+    <input type="text" [(ngModel)]="newBook.name" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Broj autora:</b> </div>
+  <div class="col-12 col-md-5">
+    <input type="number" [(ngModel)]="authorsNumber" max="3" min = "0"/>
+  </div>
+</div>
+
+<div
+  *ngFor="let item of createRange(authorsNumber); let i = index"
+  [hidden]="!authorsNumber"
+  
+>
+  <div class="row" [hidden]="i != 0" >
+    <div class="col-12 col-md-2"> <b>Autori:</b> </div>
+  </div>
+
+  <div class="row" >
+    <div class="col-12 col-md-2 offset-md-2" style="padding-bottom: 1px">
+      <input type="text" [(ngModel)]="newBook.authors[i]"/>
+    </div>
+  </div>
+</div>
+
+<div class="row" style="padding-top: 5px; padding-bottom: 5px;" >
+  <div class="col-12 col-md-2"> <b>Zanrovi:</b> </div>
+  <div class="col-12 col-md-5">
+    <select multiple [(ngModel)]="newBook.genre">
+      <option *ngFor="let genre of this.bookGenres" value="{{ genre.name }}">
+        {{ genre.name }}
+      </option>
+    </select>
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px">
+  <div class="col-12 col-md-2"> <b>Izdavac:</b> </div>
+  <div class="col-12 col-md-5">
+    <input type="text" [(ngModel)]="newBook.publisher" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px">
+  <div class="col-12 col-md-2"> <b>Godina izdavanja:</b> </div>
+  <div class="col-12 col-md-5">
+    <input type="text" [(ngModel)]="newBook.publishYear" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px">
+  <div class="col-12 col-md-2"> <b>Jezik:</b> </div>
+  <div class="col-12 col-md-5">
+    <input type="text" [(ngModel)]="newBook.language" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px">
+  <div class="col-12 col-md-2"> <b>Slika:</b> </div>
+  <div class="col-12 col-md-5">
+    <input type="file" accept="image" (change)="selectImage($event)" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px">
+  <div class="col-12">
+    <input type="button" value="Dodaj knjigu" (click)="insertBook()" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px">
+  <div class="col-12">
+    <span class="error">{{ msgInsertBook }}</span>
+  </div>
+  
+</div>

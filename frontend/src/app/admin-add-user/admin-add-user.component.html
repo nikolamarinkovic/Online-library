@@ -1,0 +1,98 @@
+<div class="row" style="text-align: center; padding-bottom: 30px;">
+  <div class="col-12">
+    <h1>Dodaj korisnika</h1>
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Ime*:</b> </div>
+  <div class="col-12 col-md-6">
+    <input type="text" name="firstname" [(ngModel)]="userReg.firstname" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Prezime*:</b> </div>
+  <div class="col-12 col-md-6">
+    <input type="text" name="lastname" [(ngModel)]="userReg.lastname" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Korisnicko ime*:</b> </div>
+  <div class="col-12 col-md-6">
+    <input type="text" name="usernameReg" [(ngModel)]="userReg.username" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Lozinka*:</b> </div>
+  <div class="col-12 col-md-6">
+    <input type="password" name="passReg" [(ngModel)]="userReg.password" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Potvrdite lozinku*:</b> </div>
+  <div class="col-12 col-md-6">
+    <input
+      type="password"
+      name="passRegConfirm"
+      [(ngModel)]="confirmPassword"
+    />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Telefon*:</b> </div>
+  <div class="col-12 col-md-6">
+    <input type="text" name="phone" [(ngModel)]="userReg.phone" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Email*:</b> </div>
+  <div class="col-12 col-md-6">
+    <input type="email" name="email" [(ngModel)]="userReg.email" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Adresa*:</b></div>
+  <div class="col-12 col-md-6">
+    <input type="email" name="email" [(ngModel)]="userReg.address" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Slika:</b> </div>
+  <div class="col-12 col-md-6">
+    <input type="file" accept="image" (change)="selectImage($event)" />
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2"> <b>Tip*:</b> </div>
+  <div class="col-12 col-md-6">
+    <select name="type" [(ngModel)]="userReg.type">
+      <option value="reader" selected="true">Citalac</option>
+      <option value="moderator">Moderator</option>
+    </select>
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12 col-md-2">
+    <td colspan="2" style="text-align: center">
+      <input type="button" value="Registruj korisnika" (click)="register()" />
+    </td>
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 5px;">
+  <div class="col-12">
+    <div style="color: red">
+      {{ msgRegister }}
+    </div>
+  </div>
+</div>

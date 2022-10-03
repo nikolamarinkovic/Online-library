@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-9"></div>
+  <div class="col-3">
+    <a href="" (click)="logout()"> Odjava</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <h1>Knjige u sistemu</h1>
+  </div>
+</div>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Naziv</th>
+      <th scope="col">Autori</th>
+      <th scope="col">Izdavac</th>
+      <th scope="col">Godina izdavanja</th>
+      <th scope="col">Jezik</th>
+      <th scope="col">Broj na stanju</th>
+      <th scope="col">Status</th>
+      <th scope="col">Obrisi</th>
+      <th scope="col">Promeni podatke</th>
+      <th scope="col">Postavi za knjigu dana</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of this.books">
+      <td>{{ book.name }}</td>
+      <td>{{ book.authors.join(", ") }}</td>
+      <td>{{ book.publisher }}</td>
+      <td>{{ book.publishYear }}</td>
+      <td>{{ book.language }}</td>
+      <td>{{ book.numberInStock }}</td>
+      <td>{{ book.status }}</td>
+      <td>
+        <button (click)="deleteBook(book)" class="btn btn-danger">Obrisi</button>
+      </td>
+      <td>
+        <button (click)="changeInfoBook(book)" class="btn btn-warning">Promeni</button>
+      </td>
+      <td *ngIf="book.isBookOfTheDay == 0 && book.status == 'accepted'">
+        <button (click)="changeBookToBookOfTheDay(book)" class="btn btn-primary">Postavi</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

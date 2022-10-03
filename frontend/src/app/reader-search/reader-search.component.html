@@ -1,0 +1,114 @@
+
+<div class="row" style="text-align: center">
+  <div class="col-12"><h1>Pretraga knjiga</h1></div>
+</div>
+
+<div class="row" >
+  <div class="col-12 col-md-2"><b>Naziv:</b></div>
+  <div class="col-12 col-md-4">
+    <input type="text" [(ngModel)]="bookName" />
+  </div>
+</div>
+
+<div class="row" style="padding-top: 5px;">
+  <div class="col-12 col-md-2" ><b>Autor:</b></div>
+  <div class="col-12 col-md-4"><input type="text" [(ngModel)]="author" /></div>
+</div>
+
+<div class="row" *ngIf="this.loggedUser.status != 'blocked'" style="padding-top: 5px;">
+  <div class="col-12 col-md-2"><b>Zanrovi:</b></div>
+  <div class="col-12 col-md-4">
+    <select
+      name="selectGenre"
+      id="readerSelectGenre"
+      [(ngModel)]="this.selectedGenres"
+      multiple
+    >
+      <option
+        *ngFor="let option of this.genreOptions"
+        value="{{ option.name }}"
+      >
+        {{ option.name }}
+      </option>
+    </select>
+  </div>
+</div>
+
+<div class="row" *ngIf="this.loggedUser.status != 'blocked'" style="padding-top: 5px;">
+  <div class="col-12 col-md-2"><b>Od godine:</b></div>
+  <div class="col-12 col-md-4">
+    <input
+      type="number"
+      [(ngModel)]="this.publishYearFrom"
+      style="width: 100px"
+    />
+  </div>
+</div>
+
+<div class="row" *ngIf="this.loggedUser.status != 'blocked'" style="padding-top: 5px;">
+  <div class="col-12 col-md-2"><b>Do godine:</b></div>
+  <div class="col-12 col-md-4">
+    <input type="number" [(ngModel)]="this.publishYearTo" style="width: 100px" />
+  </div>
+</div>
+
+<div class="row" *ngIf="this.loggedUser.status != 'blocked'" style="padding-top: 5px;">
+  <div class="col-12 col-md-2"><b>Izdavac:</b></div>
+  <div class="col-12 col-md-4"><input type="text" [(ngModel)]="publisher" /></div>
+</div>
+
+<div class="row">
+  <div class="col-12"><button (click)="startSearch()" class="btn btn-primary">Search</button></div>
+</div>
+
+<hr>
+
+<div class="row" style="text-align: center; padding-bottom: 10px;">
+  <div class="col-12"><h2>Rezultati pretrage</h2></div>
+</div>
+<div *ngFor="let book of allBooks" >
+  <table class="row" class="table table-striped table-bordered table-hover" >
+    <tbody>
+      <tr>
+        <td colspan="2">
+          <img [src]="pictures.get(book.id)" />
+        </td>
+      </tr>
+  
+      <tr>
+        <td> <b>Naziv:</b> </td>
+        <td>{{ book.name }}</td>
+      </tr>
+  
+      <tr>
+        <td> <b>Autori:</b> </td>
+        <td>{{ book.authors.join(", ") }}</td>
+      </tr>
+  
+      <tr>
+        <td> <b>Izdavac:</b> </td>
+        <td>{{ book.publisher }}</td>
+      </tr>
+  
+      <tr>
+        <td> <b>Godina izdavanja:</b> </td>
+        <td>{{ book.publishYear }}</td>
+      </tr>
+  
+      <tr>
+        <td> <b>Zanrovi:</b> </td>
+        <td>{{ book.genre.join(", ") }}</td>
+      </tr>
+  
+      <tr>
+        <td> <b>Broj primeraka:</b> </td>
+        <td>{{ book.numberInStock }}</td>
+      </tr>
+  
+    </tbody>
+  </table>
+  <div style="padding-bottom: 50px">
+    <button (click)="goToBookDetails(book)" class="btn btn-info">Details</button>
+  </div>
+  
+</div>
