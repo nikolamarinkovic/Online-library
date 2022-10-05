@@ -1,0 +1,4 @@
+backend/dist/
+backend/node_modules
+frontent/node_modules
+frontend/.angular/cache/
